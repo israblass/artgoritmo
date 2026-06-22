@@ -24,20 +24,16 @@
   }
   a{color:inherit;text-decoration:none}
   button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
-  img{max-width:100%;display:block}
+  img,video{max-width:100%;display:block}
   input,textarea{font-family:inherit}
 
-  /* Wordmark — Artgoritmo brand font */
   .artg-wordmark{
     font-family:'Audiowide',ui-sans-serif,system-ui;
     font-weight:400;
     letter-spacing:0.01em;
-    font-feature-settings:normal;
   }
-  /* Berkeley Mono fallback */
   .mono{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:-0.015em}
 
-  /* Polygons texture — subtle dark pattern over canvas */
   .poly-bg{
     background-color:#08090a;
     background-image:
@@ -45,10 +41,8 @@
       radial-gradient(ellipse 600px 300px at 100% 30%, rgba(192,192,192,0.015), transparent 60%),
       url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'><g fill='none' stroke='%23131418' stroke-width='1'><polygon points='100,50 180,90 170,180 80,170 50,100'/><polygon points='300,120 380,90 440,160 410,240 320,220'/><polygon points='480,300 560,340 540,420 460,440 440,360'/><polygon points='150,320 230,300 280,380 230,460 140,440 110,360'/><polygon points='380,460 460,440 500,520 420,560 360,520'/><polygon points='40,440 110,460 130,540 60,560'/></g></svg>");
     background-size:auto,auto,800px 800px;
-    background-position:0 0,0 0,0 0;
   }
 
-  /* Section header label */
   .eyebrow{
     font-family:'JetBrains Mono',ui-monospace,monospace;
     font-size:12px;
@@ -57,7 +51,6 @@
     color:#62666d;
   }
 
-  /* Buttons */
   .btn{
     display:inline-flex;align-items:center;gap:8px;
     padding:10px 18px;border-radius:6px;
@@ -79,7 +72,6 @@
   .btn-outline:hover{border-color:#8a8f98;color:#f7f8f8}
   .btn-pill{border-radius:9999px;padding:8px 18px}
 
-  /* Inputs */
   .field{
     width:100%;
     background:#0f1011;
@@ -116,6 +108,57 @@
   }
   .nav-link:hover{color:#f7f8f8;background:#161718}
 
+  /* Mobile hamburger */
+  .hamburger{
+    display:none;
+    width:36px;height:36px;
+    align-items:center;justify-content:center;
+    border-radius:6px;
+    transition:background .15s;
+    cursor:pointer;
+    background:none;border:none;padding:0;
+  }
+  .hamburger:hover{background:#161718}
+  .hamburger span{
+    display:block;width:18px;height:2px;
+    background:#d0d6e0;
+    border-radius:2px;
+    transition:transform .25s ease, opacity .2s ease;
+    position:relative;
+  }
+  .hamburger span::before,.hamburger span::after{
+    content:'';position:absolute;left:0;
+    width:18px;height:2px;background:#d0d6e0;
+    border-radius:2px;
+    transition:transform .25s ease, opacity .2s ease;
+  }
+  .hamburger span::before{top:-6px}
+  .hamburger span::after{top:6px}
+  .hamburger.open span{background:transparent}
+  .hamburger.open span::before{transform:translateY(6px) rotate(45deg)}
+  .hamburger.open span::after{transform:translateY(-6px) rotate(-45deg)}
+
+  .mobile-menu{
+    display:none;
+    position:fixed;top:64px;left:0;right:0;bottom:0;
+    background:rgba(8,9,10,0.96);
+    backdrop-filter:blur(20px);
+    z-index:99;
+    padding:24px;
+    flex-direction:column;
+    gap:8px;
+  }
+  .mobile-menu.open{display:flex}
+  .mobile-menu a{
+    display:block;
+    padding:16px 20px;
+    font-size:18px;
+    color:#d0d6e0;
+    border-radius:8px;
+    transition:background .15s, color .15s;
+  }
+  .mobile-menu a:hover{background:#161718;color:#f7f8f8}
+
   /* Card system */
   .card{
     background:#0f1011;
@@ -123,7 +166,7 @@
     box-shadow:inset 0 0 0 1px #23252a, rgba(0,0,0,0.4) 0 2px 4px 0;
   }
 
-  /* Mockup chrome — laptop-ish frame for screenshots */
+  /* Mockup chrome */
   .mockup{
     background:#0f1011;
     border-radius:14px;
@@ -137,9 +180,12 @@
     border-bottom:1px solid #23252a;
   }
   .mockup-dot{width:10px;height:10px;border-radius:50%;background:#23252a}
-  .mockup-img{
+  .mockup-img,.mockup-video{
     display:block;width:100%;height:auto;
-    background:#0d9488;
+  }
+  .mockup-video{
+    object-fit:cover;
+    background:#0d0d0d;
   }
 
   /* Layout helpers */
@@ -147,7 +193,6 @@
   .section{padding:96px 24px}
   .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
 
-  /* Feature pill (color tag on case cards) */
   .case-tag{
     display:inline-flex;align-items:center;gap:8px;
     padding:4px 10px;border-radius:9999px;
@@ -157,7 +202,6 @@
   }
   .case-tag .dot{width:6px;height:6px;border-radius:50%}
 
-  /* Feature bullet list */
   .features{display:flex;flex-direction:column;gap:14px;margin-top:24px}
   .feature{display:flex;align-items:flex-start;gap:12px;font-size:15px;color:#d0d6e0;line-height:1.55}
   .feature-mark{
@@ -166,7 +210,6 @@
     border-radius:4px;
   }
 
-  /* Impresos grid */
   .impresos-grid{
     display:grid;
     grid-template-columns:repeat(4,1fr);
@@ -194,7 +237,6 @@
   }
   .impreso-meta{padding:14px 16px}
 
-  /* Tiny capabilities row (Quienes Somos) */
   .caps{
     display:grid;
     grid-template-columns:repeat(5,1fr);
@@ -207,14 +249,8 @@
     display:flex;flex-direction:column;align-items:center;gap:10px;
     padding:16px 8px;
   }
-  .cap-icon{
-    width:36px;height:36px;
-    color:#8a8f98;
-  }
-  .cap-label{
-    font-size:12px;color:#8a8f98;
-    letter-spacing:0.04em;
-  }
+  .cap-icon{width:36px;height:36px;color:#8a8f98}
+  .cap-label{font-size:12px;color:#8a8f98;letter-spacing:0.04em}
 
   /* Hero */
   .hero{
@@ -247,7 +283,6 @@
   }
   .hero-rif .pulse{width:6px;height:6px;border-radius:50%;background:#27a644}
 
-  /* Section heading */
   .section-head{margin-bottom:56px}
   .section-title{
     font-size:clamp(28px,4vw,48px);
@@ -263,7 +298,6 @@
     margin-top:14px;max-width:560px;
   }
 
-  /* Footer */
   .footer{
     border-top:1px solid #23252a;
     padding:48px 24px;
@@ -279,64 +313,28 @@
   .footer-meta span{display:inline-flex;align-items:center;gap:8px}
   .footer-dot{width:4px;height:4px;border-radius:50%;background:#383b3f}
 
-  /* Diagonal divider */
   .hairline{
     height:1px;background:linear-gradient(to right, transparent, #23252a 20%, #23252a 80%, transparent);
   }
 
-  /* Mobile */
-  @media (max-width:880px){
-    .nav-links{display:none}
-    .nav-inner{height:56px;padding:0 16px}
-    .section{padding:64px 16px}
-    .hero{padding:72px 16px 56px}
-    .hero-cta-row{gap:10px}
-    .hero-cta-row .btn{flex:1;justify-content:center;min-width:0}
-    .hero-rif{margin-top:32px;font-size:11px;padding:5px 10px;gap:8px}
-    .grid-2{grid-template-columns:1fr;gap:32px}
-    .grid-2.reverse > *:nth-child(1){order:2}
-    .grid-2.reverse > *:nth-child(2){order:1}
-    .impresos-grid{grid-template-columns:repeat(2,1fr);gap:10px}
-    .impreso-meta{padding:12px 14px}
-    .caps{grid-template-columns:repeat(3,1fr);gap:8px;margin-top:32px;padding-top:24px}
-    .caps .cap:nth-child(4),.caps .cap:nth-child(5){grid-column:span 1}
-    .cap{padding:12px 4px}
-    .cap-icon{width:30px;height:30px}
-    .section-head{margin-bottom:36px}
-    .section-title{font-size:32px}
-    .case-card{padding:24px !important;margin-bottom:24px !important}
-    .case-card-stage{padding:0 !important}
-    .case-card h3{font-size:28px !important}
-    /* Disable overlap on mobile, stack neatly */
-    .mockup-overlap{
-      margin:16px 0 0 0 !important;
-      width:100% !important;
-      transform:none !important;
-    }
-    .ubikgo-strip{margin-top:24px !important;grid-template-columns:1fr;gap:12px}
-    .footer-row{flex-direction:column;align-items:flex-start;gap:12px}
-    .container{padding:0 16px}
-    /* Contact section — tighten gap */
-    #contacto .grid-2{gap:32px !important}
-    #contacto form{padding:24px !important}
-    /* Card padding for Quienes Somos */
-    #nosotros .card{padding:24px !important}
-    /* Catalog accordion mobile */
-    .catalog-panel.open{max-height:720px}
-    .catalog-panel iframe{height:640px}
+  /* ===== SCROLL REVEAL ANIMATIONS ===== */
+  .reveal{
+    opacity:0;
+    transform:translateY(32px);
+    transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
   }
-  @media (max-width:560px){
-    .caps{grid-template-columns:repeat(2,1fr)}
-    .impresos-grid{grid-template-columns:1fr}
-    .hero-headline{font-size:36px;line-height:1.08}
-    .section-title{font-size:28px}
-  }
-
-  /* fade-in on scroll */
-  .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease, transform .6s ease}
+  .reveal.from-left{transform:translateX(-40px)}
+  .reveal.from-right{transform:translateX(40px)}
+  .reveal.from-scale{transform:scale(0.92)}
   .reveal.in{opacity:1;transform:none}
+  .reveal-d1{transition-delay:.1s}
+  .reveal-d2{transition-delay:.2s}
+  .reveal-d3{transition-delay:.3s}
+  .reveal-d4{transition-delay:.4s}
+  .reveal-d5{transition-delay:.5s}
+  .reveal-d6{transition-delay:.6s}
 
-  /* Overlapping secondary mockup — desktop */
+  /* Overlapping secondary mockup */
   .mockup-overlap{
     margin-top:-72px;
     width:calc(100% - 48px);
@@ -346,13 +344,11 @@
   .mockup-overlap.right{margin-left:48px}
   .mockup-overlap.left{margin-right:48px}
 
-  /* Bottom UbikGo strip */
   .ubikgo-strip{
     margin-top:72px;
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:16px;
-    position:relative;
   }
 
   /* Catalog accordion */
@@ -390,6 +386,78 @@
     font-family:'JetBrains Mono',ui-monospace,monospace;
   }
   .catalog-toggle.open .icon{transform:rotate(180deg)}
+
+  /* ===== RESPONSIVE ===== */
+
+  /* Tablet */
+  @media (max-width:1024px){
+    .grid-2{gap:40px}
+    .section{padding:80px 20px}
+    .hero{padding:96px 20px 72px}
+    .impresos-grid{grid-template-columns:repeat(2,1fr)}
+    .caps{grid-template-columns:repeat(3,1fr)}
+  }
+
+  /* Mobile */
+  @media (max-width:880px){
+    .nav-links{display:none}
+    .hamburger{display:inline-flex}
+    .nav-inner{height:56px;padding:0 16px}
+    .nav .btn-pill{display:none}
+    .mobile-menu{top:56px}
+    .section{padding:64px 16px}
+    .hero{padding:72px 16px 56px}
+    .hero-cta-row{gap:10px}
+    .hero-cta-row .btn{flex:1;justify-content:center;min-width:0}
+    .hero-rif{margin-top:32px;font-size:11px;padding:5px 10px;gap:8px}
+    .grid-2{grid-template-columns:1fr;gap:32px}
+    .grid-2.reverse > *:nth-child(1){order:2}
+    .grid-2.reverse > *:nth-child(2){order:1}
+    .impresos-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+    .impreso-meta{padding:12px 14px}
+    .caps{grid-template-columns:repeat(3,1fr);gap:8px;margin-top:32px;padding-top:24px}
+    .cap{padding:12px 4px}
+    .cap-icon{width:30px;height:30px}
+    .section-head{margin-bottom:36px}
+    .section-title{font-size:32px}
+    .case-card{padding:24px !important;margin-bottom:24px !important}
+    .case-card-stage{padding:0 !important}
+    .case-card h3{font-size:28px !important}
+    .mockup-overlap{
+      margin:16px 0 0 0 !important;
+      width:100% !important;
+      transform:none !important;
+    }
+    .ubikgo-strip{margin-top:24px !important;grid-template-columns:1fr;gap:12px}
+    .footer-row{flex-direction:column;align-items:flex-start;gap:12px}
+    .container{padding:0 16px}
+    #contacto .grid-2{gap:32px !important}
+    #contacto form{padding:24px !important}
+    #nosotros .card{padding:24px !important}
+    .catalog-panel.open{max-height:720px}
+    .catalog-panel iframe{height:640px}
+    .reveal{transform:translateY(24px)}
+    .reveal.from-left,.reveal.from-right{transform:translateY(24px)}
+  }
+
+  @media (max-width:560px){
+    .caps{grid-template-columns:repeat(2,1fr)}
+    .impresos-grid{grid-template-columns:1fr}
+    .hero-headline{font-size:36px;line-height:1.08}
+    .section-title{font-size:28px}
+    .hero-sub{font-size:15px}
+    .feature{font-size:14px}
+    .mockup-bar{padding:8px 12px}
+    .mockup-bar .mono{font-size:10px !important}
+    .mockup-dot{width:8px;height:8px}
+  }
+
+  @media (max-width:380px){
+    .hero-headline{font-size:30px}
+    .hero-cta-row .btn{font-size:13px;padding:10px 14px}
+    .section-title{font-size:24px}
+    .case-tag{font-size:10px}
+  }
 </style>
 </helmet>
 
@@ -407,27 +475,39 @@
       <a href="#impresos" class="nav-link">Impresos</a>
       <a href="#contacto" class="nav-link">Contacto</a>
     </div>
+    <button class="hamburger" id="hamburger-btn" aria-label="Menú">
+      <span></span>
+    </button>
     <a href="#contacto" class="btn btn-outline btn-pill" style="border-color:#c0c0c0;color:#c0c0c0">
       Hablemos
     </a>
   </div>
 </nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#nosotros" class="mobile-nav-link">Nosotros</a>
+  <a href="#sistemas" class="mobile-nav-link">Sistemas</a>
+  <a href="#impresos" class="mobile-nav-link">Impresos</a>
+  <a href="#contacto" class="mobile-nav-link">Contacto</a>
+  <div style="margin-top:24px;padding:0 20px">
+    <a href="#contacto" class="btn btn-primary" style="width:100%;justify-content:center">Hablemos</a>
+  </div>
+</div>
 
 <a id="top"></a>
 
 <!-- HERO -->
 <header class="hero container">
-  <div style="display:flex;align-items:center;gap:10px;margin-bottom:24px">
+  <div class="reveal" style="display:flex;align-items:center;gap:10px;margin-bottom:24px">
     <span style="width:6px;height:6px;border-radius:50%;background:#c0c0c0;box-shadow:0 0 12px rgba(192,192,192,0.6)"></span>
     <span class="mono" style="font-size:12px;color:#8a8f98;letter-spacing:0.1em">SOFTWARE A MEDIDA · IMPRESOS PUBLICITARIOS</span>
   </div>
-  <h1 class="hero-headline">
+  <h1 class="hero-headline reveal reveal-d1">
     Construimos software<br>y lo <em>imprimimos</em> también
   </h1>
-  <p class="hero-sub">
+  <p class="hero-sub reveal reveal-d2">
     Sistemas a medida para aseguradoras y empresas. Impresos para todo lo demás.
   </p>
-  <div class="hero-cta-row">
+  <div class="hero-cta-row reveal reveal-d3">
     <a href="#contacto" class="btn btn-primary">
       Hablemos de tu proyecto
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -436,7 +516,7 @@
       Ver sistemas que hicimos
     </a>
   </div>
-  <div class="hero-rif">
+  <div class="hero-rif reveal reveal-d4">
     <span class="pulse"></span>
     <span>RIF</span>
     <span style="color:#d0d6e0">J-50209850-0</span>
@@ -449,19 +529,19 @@
 
 <!-- QUIENES SOMOS -->
 <section id="nosotros" class="section container">
-  <div class="section-head">
+  <div class="section-head reveal">
     <div class="eyebrow">01 · Quiénes somos</div>
     <h2 class="section-title">Una empresa técnica, sin rodeos.</h2>
   </div>
 
   <div class="grid-2">
-    <div class="card" style="padding:36px">
+    <div class="card reveal from-left" style="padding:36px">
       <div class="eyebrow" style="color:#8a8f98">Visión</div>
       <p style="margin-top:18px;font-size:17px;line-height:1.65;color:#d0d6e0">
         Llevamos años en esto. Sistemas, imprenta, producción: cambiamos de herramientas cuando el mercado lo pide, pero la idea es la misma — <span style="color:#f7f8f8">crecer junto al cliente</span>.
       </p>
     </div>
-    <div class="card" style="padding:36px">
+    <div class="card reveal from-right reveal-d2" style="padding:36px">
       <div class="eyebrow" style="color:#8a8f98">Concepto</div>
       <p style="margin-top:18px;font-size:17px;line-height:1.65;color:#d0d6e0">
         No somos una agencia de publicidad. Armamos los sistemas que hacen que el negocio del cliente funcione. <span style="color:#f7f8f8">Cada proyecto sale distinto al anterior</span> porque cada cliente es distinto.
@@ -469,8 +549,7 @@
     </div>
   </div>
 
-  <!-- Capabilities row (iconos bandolera) -->
-  <div class="caps">
+  <div class="caps reveal reveal-d2">
     <div class="cap">
       <svg class="cap-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
         <path d="M6 24l4-12 4 6 4-9 4 8 4-5"/>
@@ -515,32 +594,31 @@
 
 <!-- SISTEMAS -->
 <section id="sistemas" class="section container">
-  <div class="section-head">
+  <div class="section-head reveal">
     <div class="eyebrow">02 · Sistemas</div>
     <h2 class="section-title">Lo que hemos construido.</h2>
     <p class="section-sub">Dos plataformas que corren todos los días, con datos reales. Acá no hay mockups.</p>
   </div>
 
   <!-- Case 1: La Venezolana -->
-  <article class="card case-card" style="padding:48px;margin-bottom:32px;overflow:hidden;position:relative">
-    <!-- subtle teal corner glow -->
+  <article class="card case-card reveal from-scale" style="padding:48px;margin-bottom:32px;overflow:hidden;position:relative">
     <div style="position:absolute;top:-120px;right:-120px;width:400px;height:400px;background:radial-gradient(circle, rgba(13,148,136,0.18), transparent 60%);pointer-events:none"></div>
 
     <div class="grid-2" style="position:relative">
       <div>
-        <span class="case-tag" style="background:rgba(13,148,136,0.12);color:#5eead4">
+        <span class="case-tag reveal reveal-d1" style="background:rgba(13,148,136,0.12);color:#5eead4">
           <span class="dot" style="background:#0d9488"></span>
           Aseguradora · Pólizas
         </span>
-        <h3 style="font-size:36px;font-weight:400;line-height:1.13;letter-spacing:-0.015em;color:#f7f8f8;margin-top:20px;text-wrap:balance">
+        <h3 class="reveal reveal-d2" style="font-size:36px;font-weight:400;line-height:1.13;letter-spacing:-0.015em;color:#f7f8f8;margin-top:20px;text-wrap:balance">
           La Venezolana de Seguros y Vida
         </h3>
-        <p style="font-size:17px;line-height:1.6;color:#8a8f98;margin-top:18px">
+        <p class="reveal reveal-d3" style="font-size:17px;line-height:1.6;color:#8a8f98;margin-top:18px">
           Les hicimos el sistema donde gestionan todas sus pólizas vehiculares.
           Hoy corre con <span style="color:#5eead4;font-weight:500">131,555 contratos</span>.
         </p>
 
-        <div class="features">
+        <div class="features reveal reveal-d4">
           <div class="feature">
             <span class="feature-mark" style="background:rgba(13,148,136,0.15);color:#5eead4">
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
@@ -561,7 +639,7 @@
           </div>
         </div>
 
-        <div style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap">
+        <div class="reveal reveal-d5" style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap">
           <a href="https://wa.me/584142177070?text=Hola%2C%20me%20interesa%20cotizar%20un%20sistema%20a%20medida%20con%20Artgoritmo" target="_blank" rel="noopener" class="btn btn-primary">Quiero algo parecido</a>
           <div style="display:flex;align-items:center;gap:8px;padding:0 4px">
             <span class="mono" style="font-size:11px;color:#62666d;letter-spacing:0.1em">EN PRODUCCIÓN</span>
@@ -571,17 +649,19 @@
       </div>
 
       <div class="case-card-stage" style="padding:0">
-        <div class="mockup">
+        <div class="mockup reveal from-right reveal-d2">
           <div class="mockup-bar">
             <span class="mockup-dot"></span>
             <span class="mockup-dot"></span>
             <span class="mockup-dot"></span>
             <span style="margin-left:14px;font-size:11px;color:#62666d" class="mono">venezolanaseguros.app/contratos</span>
           </div>
-          <img class="mockup-img" src="assets/venezolana-contratos.jpg" alt="Sistema de contratos La Venezolana" style="background:#0d9488">
+          <video class="mockup-video" autoplay loop muted playsinline preload="metadata" poster="assets/venezolana-contratos.jpg">
+            <source src="assets/venezolana-demo.mp4" type="video/mp4">
+            <img class="mockup-img" src="assets/venezolana-contratos.jpg" alt="Sistema de contratos La Venezolana">
+          </video>
         </div>
-        <!-- Secondary smaller mockup overlapping -->
-        <div class="mockup mockup-overlap right">
+        <div class="mockup mockup-overlap right reveal from-right reveal-d4">
           <div class="mockup-bar">
             <span class="mockup-dot"></span><span class="mockup-dot"></span><span class="mockup-dot"></span>
             <span style="margin-left:14px;font-size:11px;color:#62666d" class="mono">buscar por placa</span>
@@ -593,24 +673,25 @@
   </article>
 
   <!-- Case 2: UbikGo -->
-  <article class="card case-card" style="padding:48px;overflow:hidden;position:relative">
-    <!-- subtle orange glow on the screenshot side -->
+  <article class="card case-card reveal from-scale" style="padding:48px;overflow:hidden;position:relative">
     <div style="position:absolute;bottom:-120px;left:-120px;width:400px;height:400px;background:radial-gradient(circle, rgba(245,158,11,0.15), transparent 60%);pointer-events:none"></div>
     <div style="position:absolute;top:-100px;left:30%;width:300px;height:300px;background:radial-gradient(circle, rgba(26,35,126,0.45), transparent 60%);pointer-events:none"></div>
 
     <div class="grid-2 reverse" style="position:relative">
       <div class="case-card-stage" style="padding:0">
-        <div class="mockup" style="box-shadow:inset 0 0 0 1px #23252a, rgba(26,35,126,0.4) 0 8px 40px 0, rgba(0,0,0,0.4) 0 2px 4px 0">
+        <div class="mockup reveal from-left reveal-d2" style="box-shadow:inset 0 0 0 1px #23252a, rgba(26,35,126,0.4) 0 8px 40px 0, rgba(0,0,0,0.4) 0 2px 4px 0">
           <div class="mockup-bar">
             <span class="mockup-dot"></span>
             <span class="mockup-dot"></span>
             <span class="mockup-dot"></span>
             <span style="margin-left:14px;font-size:11px;color:#62666d" class="mono">ubikgo.com/cotizar</span>
           </div>
-          <img class="mockup-img" src="assets/ubikgo-cotizacion.jpg" alt="Cotización UbikGo" style="background:#1a237e">
+          <video class="mockup-video" autoplay loop muted playsinline preload="metadata" poster="assets/ubikgo-cotizacion.jpg">
+            <source src="assets/ubikgo-demo-1.mp4" type="video/mp4">
+            <img class="mockup-img" src="assets/ubikgo-cotizacion.jpg" alt="Cotización UbikGo">
+          </video>
         </div>
-        <!-- Secondary mockup -->
-        <div class="mockup mockup-overlap left">
+        <div class="mockup mockup-overlap left reveal from-left reveal-d4">
           <div class="mockup-bar">
             <span class="mockup-dot"></span><span class="mockup-dot"></span><span class="mockup-dot"></span>
             <span style="margin-left:14px;font-size:11px;color:#62666d" class="mono">panel admin · contratos</span>
@@ -620,18 +701,18 @@
       </div>
 
       <div>
-        <span class="case-tag" style="background:rgba(245,158,11,0.12);color:#f59e0b">
+        <span class="case-tag reveal reveal-d1" style="background:rgba(245,158,11,0.12);color:#f59e0b">
           <span class="dot" style="background:#f59e0b"></span>
           Pólizas de grúa · USD/Bs
         </span>
-        <h3 style="font-size:36px;font-weight:400;line-height:1.13;letter-spacing:-0.015em;color:#f7f8f8;margin-top:20px;text-wrap:balance">
+        <h3 class="reveal reveal-d2" style="font-size:36px;font-weight:400;line-height:1.13;letter-spacing:-0.015em;color:#f7f8f8;margin-top:20px;text-wrap:balance">
           UbikGo
         </h3>
-        <p style="font-size:17px;line-height:1.6;color:#8a8f98;margin-top:18px">
+        <p class="reveal reveal-d3" style="font-size:17px;line-height:1.6;color:#8a8f98;margin-top:18px">
           Plataforma para vender y operar pólizas de grúa. Desde la cotización hasta la asignación del gruero.
         </p>
 
-        <div class="features">
+        <div class="features reveal reveal-d4">
           <div class="feature">
             <span class="feature-mark" style="background:rgba(245,158,11,0.15);color:#f59e0b">
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
@@ -664,7 +745,7 @@
           </div>
         </div>
 
-        <div style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap">
+        <div class="reveal reveal-d5" style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap">
           <a href="https://wa.me/584142177070?text=Hola%2C%20me%20interesa%20cotizar%20un%20sistema%20a%20medida%20con%20Artgoritmo" target="_blank" rel="noopener" class="btn btn-primary">Quiero algo parecido</a>
           <div style="display:flex;align-items:center;gap:8px;padding:0 4px">
             <span class="mono" style="font-size:11px;color:#62666d;letter-spacing:0.1em">EN PRODUCCIÓN</span>
@@ -674,16 +755,19 @@
       </div>
     </div>
 
-    <!-- Extra screenshot strip below for UbikGo (admin + canje thumbnails) -->
+    <!-- Extra screenshot strip with video -->
     <div class="ubikgo-strip">
-      <div class="mockup">
+      <div class="mockup reveal reveal-d1">
         <div class="mockup-bar">
           <span class="mockup-dot"></span><span class="mockup-dot"></span><span class="mockup-dot"></span>
           <span style="margin-left:14px;font-size:11px;color:#62666d" class="mono">asignar gruero</span>
         </div>
-        <img class="mockup-img" src="assets/ubikgo-admin.jpg" alt="Asignar gruero" style="background:#1a237e">
+        <video class="mockup-video" autoplay loop muted playsinline preload="metadata" poster="assets/ubikgo-admin.jpg">
+          <source src="assets/ubikgo-demo-3.mp4" type="video/mp4">
+          <img class="mockup-img" src="assets/ubikgo-admin.jpg" alt="Asignar gruero">
+        </video>
       </div>
-      <div class="mockup">
+      <div class="mockup reveal reveal-d2">
         <div class="mockup-bar">
           <span class="mockup-dot"></span><span class="mockup-dot"></span><span class="mockup-dot"></span>
           <span style="margin-left:14px;font-size:11px;color:#62666d" class="mono">canjear contrato</span>
@@ -698,7 +782,7 @@
 
 <!-- IMPRESOS -->
 <section id="impresos" class="section container">
-  <div class="section-head" style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-bottom:48px">
+  <div class="section-head reveal" style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-bottom:48px">
     <div>
       <div class="eyebrow">03 · Impresos</div>
       <h2 class="section-title">También hacemos esto.</h2>
@@ -712,7 +796,7 @@
 
   <div class="impresos-grid">
     <!-- Roll Up -->
-    <div class="impreso-card">
+    <div class="impreso-card reveal reveal-d1">
       <div class="impreso-visual">
         <svg viewBox="0 0 200 200" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" style="padding:24px">
           <defs>
@@ -741,7 +825,7 @@
     </div>
 
     <!-- Backings -->
-    <div class="impreso-card">
+    <div class="impreso-card reveal reveal-d2">
       <div class="impreso-visual">
         <svg viewBox="0 0 200 200" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" style="padding:24px">
           <rect x="20" y="35" width="160" height="110" fill="#161718" stroke="#62666d" stroke-width="1"/>
@@ -752,7 +836,6 @@
           <rect x="32" y="100" width="70" height="3" fill="#62666d"/>
           <rect x="32" y="108" width="60" height="3" fill="#62666d"/>
           <rect x="32" y="116" width="50" height="3" fill="#62666d"/>
-          <!-- frame supports -->
           <line x1="35" y1="145" x2="20" y2="175" stroke="#62666d" stroke-width="1.5"/>
           <line x1="165" y1="145" x2="180" y2="175" stroke="#62666d" stroke-width="1.5"/>
           <line x1="100" y1="145" x2="100" y2="175" stroke="#383b3f" stroke-width="1"/>
@@ -767,22 +850,19 @@
     </div>
 
     <!-- Banderines -->
-    <div class="impreso-card">
+    <div class="impreso-card reveal reveal-d3">
       <div class="impreso-visual">
         <svg viewBox="0 0 200 200" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" style="padding:24px">
           <line x1="100" y1="20" x2="100" y2="180" stroke="#62666d" stroke-width="2"/>
           <circle cx="100" cy="22" r="3" fill="#c0c0c0"/>
-          <!-- flag 1 -->
           <path d="M100 38 L150 40 L140 60 L150 80 L100 78 Z" fill="#161718" stroke="#8a8f98" stroke-width="1"/>
           <rect x="108" y="50" width="20" height="3" fill="#c0c0c0" opacity="0.7"/>
           <rect x="108" y="58" width="30" height="2" fill="#62666d"/>
           <rect x="108" y="63" width="24" height="2" fill="#62666d"/>
-          <!-- flag 2 -->
           <path d="M100 95 L50 97 L60 117 L50 137 L100 135 Z" fill="#0f1011" stroke="#62666d" stroke-width="1"/>
           <rect x="68" y="107" width="22" height="3" fill="#c0c0c0" opacity="0.6"/>
           <rect x="68" y="115" width="28" height="2" fill="#62666d"/>
           <rect x="68" y="120" width="20" height="2" fill="#62666d"/>
-          <!-- flag 3 -->
           <path d="M100 150 L140 152 L132 165 L140 178 L100 176 Z" fill="#161718" stroke="#8a8f98" stroke-width="1"/>
           <rect x="108" y="160" width="18" height="2" fill="#62666d"/>
           <rect x="108" y="166" width="22" height="2" fill="#62666d"/>
@@ -796,20 +876,16 @@
     </div>
 
     <!-- Stands -->
-    <div class="impreso-card">
+    <div class="impreso-card reveal reveal-d4">
       <div class="impreso-visual">
         <svg viewBox="0 0 200 200" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" style="padding:24px">
-          <!-- back wall -->
           <polygon points="40,30 110,15 110,135 40,150" fill="#161718" stroke="#62666d" stroke-width="1"/>
           <rect x="55" y="35" width="40" height="6" fill="#c0c0c0" opacity="0.7" transform="skewY(-12)"/>
           <rect x="55" y="50" width="50" height="3" fill="#62666d" transform="skewY(-12)"/>
           <rect x="55" y="58" width="40" height="3" fill="#62666d" transform="skewY(-12)"/>
-          <!-- side wall -->
           <polygon points="110,15 170,40 170,160 110,135" fill="#0f1011" stroke="#8a8f98" stroke-width="1"/>
           <rect x="125" y="60" width="40" height="50" fill="#c0c0c0" opacity="0.15"/>
-          <!-- floor / base -->
           <polygon points="40,150 110,135 170,160 100,180" fill="#23252a" opacity="0.6"/>
-          <!-- light bar -->
           <line x1="40" y1="30" x2="170" y2="40" stroke="#c0c0c0" stroke-width="0.5" opacity="0.6"/>
         </svg>
       </div>
@@ -821,8 +897,7 @@
     </div>
   </div>
 
-  <!-- Tiny chips for other categories -->
-  <div style="margin-top:32px;display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+  <div class="reveal reveal-d2" style="margin-top:32px;display:flex;flex-wrap:wrap;gap:8px;align-items:center">
     <span class="mono" style="font-size:11px;color:#62666d;letter-spacing:0.1em;margin-right:8px">TAMBIÉN:</span>
     <span style="padding:5px 11px;border-radius:9999px;border:1px solid #23252a;font-size:12px;color:#8a8f98">Arañas</span>
     <span style="padding:5px 11px;border-radius:9999px;border:1px solid #23252a;font-size:12px;color:#8a8f98">Trípodes</span>
@@ -848,7 +923,7 @@
     <iframe id="catalog-iframe" data-src="catalogo-artgoritmo.html" title="Catálogo Artgoritmo" loading="lazy"></iframe>
   </div>
 
-  <div style="margin-top:48px">
+  <div class="reveal reveal-d3" style="margin-top:48px">
     <a href="https://wa.me/584142177070?text=Hola%2C%20me%20interesa%20solicitar%20presupuesto%20de%20impresos%20con%20Artgoritmo" target="_blank" rel="noopener" class="btn btn-primary">Pedir presupuesto</a>
   </div>
 </section>
@@ -859,13 +934,13 @@
 <section id="contacto" class="section container">
   <div class="grid-2" style="align-items:flex-start;gap:80px">
     <div>
-      <div class="eyebrow">04 · Contacto</div>
-      <h2 class="section-title" style="margin-bottom:24px">Hablemos.</h2>
-      <p style="font-size:17px;line-height:1.6;color:#8a8f98;max-width:420px">
+      <div class="eyebrow reveal">04 · Contacto</div>
+      <h2 class="section-title reveal reveal-d1" style="margin-bottom:24px">Hablemos.</h2>
+      <p class="reveal reveal-d2" style="font-size:17px;line-height:1.6;color:#8a8f98;max-width:420px">
         Contanos qué necesitas. Si es un sistema, te decimos en una llamada si tiene sentido construirlo. Si es un impreso, en horas tienes presupuesto.
       </p>
 
-      <div style="margin-top:40px;display:flex;flex-direction:column;gap:18px">
+      <div class="reveal reveal-d3" style="margin-top:40px;display:flex;flex-direction:column;gap:18px">
         <div style="display:flex;align-items:center;gap:14px">
           <span style="width:34px;height:34px;border-radius:8px;background:#0f1011;border:1px solid #23252a;display:inline-flex;align-items:center;justify-content:center;color:#c0c0c0">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v12H4z"/><path d="M4 6l8 7 8-7"/></svg>
@@ -887,7 +962,7 @@
       </div>
     </div>
 
-    <form class="card" style="padding:36px;display:flex;flex-direction:column;gap:18px" onsubmit="return false">
+    <form class="card reveal from-right reveal-d2" style="padding:36px;display:flex;flex-direction:column;gap:18px" onsubmit="return false">
       <div>
         <label style="display:block;font-size:12px;color:#8a8f98;margin-bottom:8px;letter-spacing:0.04em" class="mono">NOMBRE</label>
         <input class="field" type="text" placeholder="Tu nombre">
@@ -945,21 +1020,57 @@
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   componentDidMount() {
-    // Reveal-on-scroll
-    const els = document.querySelectorAll('.reveal');
+    // Reveal-on-scroll with IntersectionObserver
+    const revealEls = document.querySelectorAll('.reveal');
     if (!('IntersectionObserver' in window)) {
-      els.forEach(el => el.classList.add('in'));
-      return;
+      revealEls.forEach(el => el.classList.add('in'));
+    } else {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+      revealEls.forEach(el => io.observe(el));
     }
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('in');
-          io.unobserve(e.target);
-        }
+
+    // Autoplay videos when they scroll into view
+    const videos = document.querySelectorAll('video[autoplay]');
+    if ('IntersectionObserver' in window) {
+      const vidObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.play().catch(() => {});
+          } else {
+            e.target.pause();
+          }
+        });
+      }, { threshold: 0.15 });
+      videos.forEach(v => {
+        v.pause();
+        vidObs.observe(v);
       });
-    }, { threshold: 0.12 });
-    els.forEach(el => io.observe(el));
+    }
+
+    // Mobile hamburger menu
+    const hamburger = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener('click', () => {
+        const open = mobileMenu.classList.toggle('open');
+        hamburger.classList.toggle('open', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+      });
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('open');
+          hamburger.classList.remove('open');
+          document.body.style.overflow = '';
+        });
+      });
+    }
 
     // Catalog accordion toggle
     const toggle = document.getElementById('catalog-toggle');
@@ -975,11 +1086,9 @@ class Component extends DCLogic {
       panel.setAttribute('aria-hidden', open ? 'false' : 'true');
       const label = toggle.querySelector('.label');
       if (label) label.textContent = open ? 'Ocultar catálogo' : 'Ver catálogo completo';
-      // Lazy-load iframe on first open
       if (open && iframe && !iframe.src && iframe.dataset.src) {
         iframe.src = iframe.dataset.src;
       }
-      // Scroll panel into view when opening
       if (open) {
         setTimeout(() => {
           const r = panel.getBoundingClientRect();
@@ -1001,7 +1110,6 @@ class Component extends DCLogic {
       closeBtn.addEventListener('click', (e) => {
         e.preventDefault();
         setOpen(false);
-        // Scroll back up to trigger so user sees they collapsed it
         if (toggle) {
           const r = toggle.getBoundingClientRect();
           const top = window.scrollY + r.top - 120;
