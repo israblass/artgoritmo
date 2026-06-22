@@ -172,8 +172,14 @@
     border-bottom:1px solid #23252a;
   }
   .mockup-dot{width:10px;height:10px;border-radius:50%;background:#23252a}
-  .mockup-img,.mockup-video{display:block;width:100%;height:auto}
-  .mockup-video{object-fit:cover;background:#0d0d0d}
+  .mockup-img{display:block;width:100%;height:auto}
+  .mockup-video{
+    display:block;width:100%;
+    aspect-ratio:16/10;
+    object-fit:cover;
+    object-position:top left;
+    background:#0d0d0d;
+  }
 
   /* Layout */
   .container{max-width:1200px;margin:0 auto;padding:0 24px}
