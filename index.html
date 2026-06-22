@@ -392,53 +392,89 @@
     .hamburger{display:inline-flex}
     .nav-inner{height:56px;padding:0 16px}
     .nav .btn-pill{display:none}
+    .nav-inner img{height:24px !important}
     .mobile-menu{top:56px}
-    .section{padding:64px 16px}
-    .hero{padding:72px 16px 56px}
+    .section{padding:56px 16px}
+    .hero{padding:64px 16px 48px}
     .hero-cta-row{gap:10px}
     .hero-cta-row .btn{flex:1;justify-content:center;min-width:0}
-    .hero-rif{margin-top:32px;font-size:11px;padding:5px 10px;gap:8px}
-    .grid-2{grid-template-columns:1fr;gap:32px}
+    .hero-rif{margin-top:28px;font-size:11px;padding:5px 10px;gap:8px}
+    .grid-2{grid-template-columns:1fr;gap:28px}
     .grid-2.reverse > *:nth-child(1){order:2}
     .grid-2.reverse > *:nth-child(2){order:1}
     .impresos-grid{grid-template-columns:repeat(2,1fr);gap:10px}
-    .impreso-meta{padding:12px 14px}
-    .caps{grid-template-columns:repeat(3,1fr);gap:8px;margin-top:32px;padding-top:24px}
-    .cap{padding:12px 4px}
-    .cap-icon{width:30px;height:30px}
-    .section-head{margin-bottom:36px}
+    .impreso-meta{padding:10px 12px}
+    .caps{grid-template-columns:repeat(3,1fr);gap:8px;margin-top:28px;padding-top:20px}
+    .cap{padding:10px 4px}
+    .cap-icon{width:28px;height:28px}
+    .cap-label{font-size:11px}
+    .section-head{margin-bottom:28px}
     .section-title{font-size:32px}
-    .case-card{padding:24px !important;margin-bottom:24px !important}
+    .section-sub{font-size:15px;margin-top:10px}
+    .case-card{padding:20px !important;margin-bottom:20px !important}
     .case-card-stage{padding:0 !important}
-    .case-card h3{font-size:28px !important}
-    .mockup-overlap{margin:16px 0 0 0 !important;width:100% !important;transform:none !important}
-    .ubikgo-strip{margin-top:24px !important;grid-template-columns:1fr;gap:12px}
-    .footer-row{flex-direction:column;align-items:flex-start;gap:12px}
+    .case-card h3{font-size:26px !important}
+    .case-card p{font-size:15px !important}
+    .case-card .features{margin-top:18px;gap:10px}
+    .case-card .feature{font-size:14px}
+    .case-card .btn{font-size:13px;padding:10px 16px}
+    .mockup-overlap{margin:12px 0 0 0 !important;width:100% !important;transform:none !important}
+    .case-cta-row{margin-top:24px !important;gap:10px !important}
+    .mockup-bar{overflow:hidden}
+    .mockup-bar .mono{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60vw}
+    .ubikgo-strip{margin-top:20px !important;grid-template-columns:1fr;gap:12px}
+    .footer-row{flex-direction:column;align-items:flex-start;gap:10px}
+    .footer-meta{gap:8px}
+    .footer-meta .footer-dot{display:none}
+    .footer-meta span{font-size:12px}
     .container{padding:0 16px}
-    #contacto .grid-2{gap:32px !important}
-    #contacto form{padding:24px !important}
-    #nosotros .card{padding:24px !important}
+    #contacto .grid-2{gap:28px !important}
+    #contacto .section-title{margin-bottom:16px !important}
+    #contacto form{padding:20px !important;gap:14px !important}
+    #contacto form .btn{font-size:13px;padding:10px 14px}
+    #nosotros .card{padding:20px !important}
+    #nosotros .card p{font-size:15px !important}
     .catalog-panel.open{max-height:720px}
     .catalog-panel iframe{height:640px}
+    .catalog-panel-bar{padding:10px 14px}
     .reveal{transform:translateY(24px)}
     .reveal.from-left,.reveal.from-right{transform:translateY(24px)}
+    .hairline{margin:0 16px}
   }
   @media (max-width:560px){
     .caps{grid-template-columns:repeat(2,1fr)}
-    .impresos-grid{grid-template-columns:1fr}
-    .hero-headline{font-size:36px;line-height:1.08}
-    .section-title{font-size:28px}
-    .hero-sub{font-size:15px}
-    .feature{font-size:14px}
-    .mockup-bar{padding:8px 12px}
-    .mockup-bar .mono{font-size:10px !important}
+    .impresos-grid{grid-template-columns:1fr;gap:12px}
+    .impreso-visual{aspect-ratio:4/3}
+    .hero-headline{font-size:32px;line-height:1.08}
+    .hero-sub{font-size:14px;margin-top:16px}
+    .hero-cta-row{flex-direction:column;gap:10px}
+    .hero-cta-row .btn{width:100%;justify-content:center;flex:none}
+    .section{padding:48px 16px}
+    .section-title{font-size:26px}
+    .section-sub{font-size:14px}
+    .feature{font-size:13px}
+    .mockup-bar{padding:8px 10px}
+    .mockup-bar .mono{font-size:10px !important;max-width:50vw}
     .mockup-dot{width:8px;height:8px}
+    #contacto form .field{padding:10px 12px;font-size:13px}
+    #contacto form textarea.field{min-height:100px}
+    #contacto form > div:last-of-type{flex-direction:column}
+    #contacto form .btn{width:100%;min-width:0 !important;justify-content:center}
+    .catalog-panel.open{max-height:560px}
+    .catalog-panel iframe{height:480px}
   }
   @media (max-width:380px){
-    .hero-headline{font-size:30px}
+    .hero-headline{font-size:28px}
     .hero-cta-row .btn{font-size:13px;padding:10px 14px}
-    .section-title{font-size:24px}
+    .section-title{font-size:23px}
+    .section{padding:40px 14px}
+    .container{padding:0 14px}
+    .case-card{padding:16px !important}
+    .case-card h3{font-size:22px !important}
     .case-tag{font-size:10px}
+    .impreso-meta{padding:8px 10px}
+    .nav-inner{padding:0 12px}
+    .hairline{margin:0 14px}
   }
 </style>
 </head>
@@ -600,7 +636,7 @@
             <span>Estadísticas filtradas por período, sucursal y vendedor.</span>
           </div>
         </div>
-        <div class="reveal reveal-d5" style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap">
+        <div class="reveal reveal-d5 case-cta-row" style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap;align-items:center">
           <a href="https://wa.me/584142177070?text=Hola%2C%20me%20interesa%20cotizar%20un%20sistema%20a%20medida%20con%20Artgoritmo" target="_blank" rel="noopener" class="btn btn-primary">Quiero algo parecido</a>
           <div style="display:flex;align-items:center;gap:8px;padding:0 4px">
             <span class="mono" style="font-size:11px;color:#62666d;letter-spacing:0.1em">EN PRODUCCIÓN</span>
@@ -690,7 +726,7 @@
             <span>Precios duales en USD y Bs.</span>
           </div>
         </div>
-        <div class="reveal reveal-d5" style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap">
+        <div class="reveal reveal-d5 case-cta-row" style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap;align-items:center">
           <a href="https://wa.me/584142177070?text=Hola%2C%20me%20interesa%20cotizar%20un%20sistema%20a%20medida%20con%20Artgoritmo" target="_blank" rel="noopener" class="btn btn-primary">Quiero algo parecido</a>
           <div style="display:flex;align-items:center;gap:8px;padding:0 4px">
             <span class="mono" style="font-size:11px;color:#62666d;letter-spacing:0.1em">EN PRODUCCIÓN</span>
